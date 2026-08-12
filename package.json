@@ -1,0 +1,17 @@
+{
+  "name": "magazord-quality-test",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Teste técnico de QA - automação, API, E2E, arquivos e estratégia de qualidade",
+  "scripts": {
+    "test": "cypress run",
+    "test:parte1": "cypress run --spec \"parte1-api/questao1.1/testes/**/*.spec.js\"",
+    "test:parte2": "cypress run --spec \"parte2-e2e/questao2.1/testes/**/*.spec.js\"",
+    "test:parte3": "cypress run --spec \"parte3-arquivos/questao3.1/testes/**/*.spec.js\"",
+    "test:open": "cypress open",
+    "test:chrome": "cypress run --browser chrome"
+  },
+  "devDependencies": {
+    "cypress": "^14.5.0"
+  }
+}
