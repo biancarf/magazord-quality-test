@@ -4,20 +4,32 @@ const { defineConfig } = require("cypress");
 
 module.exports = defineConfig({
   e2e: {
-    baseUrl: "https://www.saucedemo.com",
+  baseUrl: "https://www.saucedemo.com",
 
-    specPattern: [
-      "parte1-api/questao1.1/testes/**/*.spec.js",
-      "parte2-e2e/questao2.1/testes/**/*.spec.js",
-      "parte3-arquivos/questao3.1/testes/**/*.spec.js"
-    ],
+  specPattern: [
+    "parte1-api/questao1.1/testes/**/*.spec.js",
+    "parte2-e2e/questao2.1/testes/**/*.spec.js",
+    "parte3-arquivos/questao3.1/testes/**/*.spec.js"
+  ],
 
-    env: {
-      reqresApiKey: process.env.REQRES_API_KEY,
-      reqresEnv: process.env.REQRES_ENV || "prod"
-    },
+  env: {
+    reqresApiKey: process.env.REQRES_API_KEY,
+    reqresEnv: process.env.REQRES_ENV || "prod"
+  },
 
-    supportFile: false,
+  setupNodeEvents(on, config) {
+    on("task", {
+      generateCsv({ rowCount, fileName }) {
+        const { writeCsvFile } = require("./parte3-arquivos/questao3.1/testes/utils/csv-generator");
+
+        return writeCsvFile(rowCount, fileName);
+      }
+    });
+
+    return config;
+  },
+
+  supportFile: false,
     video: false,
     screenshotOnRunFailure: true,
 

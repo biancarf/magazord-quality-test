@@ -5,3 +5,5 @@ cypress/videos/
 .env.*
 !.env.example
 .DS_Store
+
+parte3-arquivos/questao3.1/testes/fixtures/generated/
